@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Raven Aldrich — Portfolio</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  :root{
+    --bg:#05070d;
+    --neon:#4dd9ff;
+    --neon-soft:#7fe3ff;
+    --neon-deep:#1a8fbf;
+    --txt:#e8f4ff;
+  }
+  *{font-family:'Space Grotesk',sans-serif;}
+  body{background:var(--bg);color:var(--txt);overflow-x:hidden;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  
+  .grid-bg{position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:linear-gradient(rgba(77,217,255,.05) 1px, transparent 1px),
+                     linear-gradient(90deg, rgba(77,217,255,.05) 1px, transparent 1px);
+    background-size:50px 50px;
+    mask-image:radial-gradient(ellipse at center, black 0%, transparent 80%);}
+  
+  .orb{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;opacity:.45;
+    background:radial-gradient(circle, rgba(77,217,255,.6), transparent 70%);}
+  .orb-1{width:500px;height:500px;top:-100px;left:-100px;animation:float1 18s ease-in-out infinite;}
+  .orb-2{width:400px;height:400px;bottom:-100px;right:-50px;animation:float2 22s ease-in-out infinite;
+    background:radial-gradient(circle, rgba(127,227,255,.4), transparent 70%);}
+  .orb-3{width:300px;height:300px;top:40%;left:60%;animation:float3 25s ease-in-out infinite;opacity:.25;}
+  @keyframes float1{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(80px,60px) scale(1.15);}}
+  @keyframes float2{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(-100px,-50px) scale(1.2);}}
+  @keyframes float3{0%,100%{transform:translate(0,0);}33%{transform:translate(-60px,40px);}66%{transform:translate(40px,-60px);}}
+  
+  .neon-text{color:var(--neon);text-shadow:0 0 10px rgba(77,217,255,.6),0 0 30px rgba(77,217,255,.3);}
+  .neon-text-soft{color:var(--neon-soft);text-shadow:0 0 8px rgba(127,227,255,.4);}
+  
+  .neon-box{position:relative;background:linear-gradient(135deg,rgba(77,217,255,.04),rgba(10,14,26,.6));
+    border:1px solid rgba(77,217,255,.18);border-radius:14px;backdrop-filter:blur(8px);transition:all .4s ease;}
+  .neon-box:hover{border-color:rgba(77,217,255,.55);box-shadow:0 0 25px rgba(77,217,255,.2),inset 0 0 20px rgba(77,217,255,.05);transform:translateY(-4px);}
+  
+  .pulse-dot{width:10px;height:10px;border-radius:50%;background:var(--neon);
+    box-shadow:0 0 12px var(--neon);animation:pulse 2s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(.85);}}
+  
+  .ring{border:1.5px solid rgba(77,217,255,.25);border-radius:50%;position:relative;}
+  .ring::after{content:'';position:absolute;top:-3px;left:50%;width:6px;height:6px;border-radius:50%;
+    background:var(--neon);box-shadow:0 0 10px var(--neon);transform:translateX(-50%);}
+  .ring-1{animation:spin 12s linear infinite;}
+  .ring-2{animation:spin 18s linear infinite reverse;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  
+  .float-icon{animation:floatIcon 4s ease-in-out infinite;}
+  @keyframes floatIcon{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+  
+  .caret::after{content:'|';margin-left:2px;color:var(--neon);animation:blink 1s step-end infinite;}
+  @keyframes blink{50%{opacity:0;}}
+  
+  .btn-neon{position:relative;background:linear-gradient(135deg,rgba(77,217,255,.15),rgba(77,217,255,.05));
+    border:1px solid rgba(77,217,255,.4);color:var(--neon-soft);transition:all .3s ease;overflow:hidden;}
+  .btn-neon::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
+    background:linear-gradient(90deg,transparent,rgba(77,217,255,.25),transparent);transition:left .6s;}
+  .btn-neon:hover::before{left:100%;}
+  .btn-neon:hover{border-color:var(--neon);box-shadow:0 0 25px rgba(77,217,255,.4);color:#fff;}
+  
+  .skill-bar{height:6px;background:rgba(77,217,255,.1);border-radius:3px;overflow:hidden;position:relative;}
+  .skill-fill{height:100%;background:linear-gradient(90deg,var(--neon-deep),var(--neon));
+    border-radius:3px;box-shadow:0 0 10px rgba(77,217,255,.5);width:0;transition:width 1.5s ease;}
+  
+  nav.navbar{backdrop-filter:blur(12px);background:rgba(5,7,13,.7);border-bottom:1px solid rgba(77,217,255,.12);}
+  .nav-link{position:relative;transition:color .3s;}
+  .nav-link::after{content:'';position:absolute;left:0;bottom:-4px;width:0;height:1px;
+    background:var(--neon);box-shadow:0 0 8px var(--neon);transition:width .3s;}
+  .nav-link:hover::after,.nav-link.active::after{width:100%;}
+  .nav-link:hover,.nav-link.active{color:var(--neon);}
+  
+  .translate-btn{position:relative;}
+  .translate-btn .tooltip{position:absolute;top:calc(100% + 8px);right:0;
+    background:rgba(10,14,26,.95);border:1px solid rgba(77,217,255,.3);color:var(--neon-soft);
+    padding:5px 12px;border-radius:6px;font-size:11px;white-space:nowrap;opacity:0;
+    pointer-events:none;transform:translateY(-4px);transition:all .25s;
+    box-shadow:0 0 15px rgba(77,217,255,.2);}
+  .translate-btn:hover .tooltip{opacity:1;transform:translateY(0);}
+  .translate-btn.active{color:var(--neon);text-shadow:0 0 8px rgba(77,217,255,.5);}
+  
+  .timeline-line{position:absolute;left:11px;top:0;bottom:0;width:1px;
+    background:linear-gradient(to bottom,transparent,rgba(77,217,255,.4),rgba(77,217,255,.4),transparent);}
+  .timeline-dot{width:22px;height:22px;border-radius:50%;border:2px solid var(--neon);
+    background:var(--bg);box-shadow:0 0 12px rgba(77,217,255,.5);flex-shrink:0;
+    animation:pulse-ring 3s ease-in-out infinite;}
+  @keyframes pulse-ring{0%,100%{box-shadow:0 0 12px rgba(77,217,255,.5);}50%{box-shadow:0 0 20px rgba(77,217,255,.8);}}
+  
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s;}
+  .reveal.visible{opacity:1;transform:translateY(0);}
+  
+  .project-img{aspect-ratio:16/10;background:linear-gradient(135deg,rgba(77,217,255,.15),rgba(10,14,26,.8));
+    position:relative;overflow:hidden;}
+  .project-img::after{content:'';position:absolute;inset:0;
+    background:repeating-linear-gradient(45deg,transparent,transparent 10px,rgba(77,217,255,.03) 10px,rgba(77,217,255,.03) 20px);}
+  
+  .mobile-menu{transition:max-height .4s ease,opacity .3s ease;max-height:0;overflow:hidden;opacity:0;}
+  .mobile-menu.open{max-height:400px;opacity:1;}
+  
+  ::-webkit-scrollbar{width:8px;}
+  ::-webkit-scrollbar-track{background:var(--bg);}
+  ::-webkit-scrollbar-thumb{background:rgba(77,217,255,.25);border-radius:4px;}
+  ::-webkit-scrollbar-thumb:hover{background:rgba(77,217,255,.5);}
+  
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms !important;animation-iteration-count:1 !important;}}
+</style>
+</head>
+<body class="relative">
+
+<div class="grid-bg"></div>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar fixed top-0 left-0 right-0 z-50">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 py-4 flex items-center justify-between">
+    <a href="#home" class="flex items-center gap-2.5">
+      <div class="relative w-8 h-8">
+        <div class="ring ring-1 absolute inset-0"></div>
+        <div class="ring ring-2 absolute inset-1.5"></div>
+        <div class="pulse-dot absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+      </div>
+      <span class="mono text-sm tracking-wider neon-text-soft">RAVEN.DEV</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm">
+      <a href="#home" class="nav-link active" data-en="Home" data-id="Beranda">Home</a>
+      <a href="#about" class="nav-link" data-en="About" data-id="Tentang">About</a>
+      <a href="#projects" class="nav-link" data-en="Projects" data-id="Proyek">Projects</a>
+      <a href="#skills" class="nav-link" data-en="Skills" data-id="Keahlian">Skills</a>
+      <a href="#experience" class="nav-link" data-en="Journey" data-id="Perjalanan">Journey</a>
+      <a href="#contact" class="nav-link" data-en="Contact" data-id="Kontak">Contact</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <button id="translateBtn" class="translate-btn mono text-xs px-3 py-2 rounded-md border border-cyan-400/30 hover:border-cyan-400/70 transition flex items-center gap-2">
+        <i class="fa-solid fa-language text-cyan-300"></i>
+        <span id="langLabel">EN</span>
+        <span class="tooltip" data-en="Translate" data-id="Terjemahkan">Terjemahkan</span>
+      </button>
+      <button id="mobileToggle" class="md:hidden text-cyan-300 text-xl">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="mobile-menu md:hidden border-t border-cyan-400/10">
+    <div class="px-5 py-3 flex flex-col gap-3 text-sm">
+      <a href="#home" class="nav-link" data-en="Home" data-id="Beranda">Home</a>
+      <a href="#about" class="nav-link" data-en="About" data-id="Tentang">About</a>
+      <a href="#projects" class="nav-link" data-en="Projects" data-id="Proyek">Projects</a>
+      <a href="#skills" class="nav-link" data-en="Skills" data-id="Keahlian">Skills</a>
+      <a href="#experience" class="nav-link" data-en="Journey" data-id="Perjalanan">Journey</a>
+      <a href="#contact" class="nav-link" data-en="Contact" data-id="Kontak">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main class="relative z-10 pt-24">
+
+  <!-- HOME -->
+  <section id="home" class="min-h-[90vh] flex items-center px-5 sm:px-8 max-w-7xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-12 items-center w-full">
+      <div>
+        <div class="flex items-center gap-3 mb-6 mono text-xs text-cyan-300/80">
+          <span class="pulse-dot"></span>
+          <span data-en="AVAILABLE FOR WORK" data-id="TERSEDIA UNTUK KERJA">AVAILABLE FOR WORK</span>
+        </div>
+        <h1 class="text-5xl sm:text-6xl lg:text-7xl font-light leading-tight mb-6">
+          <span data-en="Hi, I'm" data-id="Halo, saya">Hi, I'm</span><br>
+          <span class="font-bold neon-text">Raven Aldrich</span>
+        </h1>
+        <p class="text-xl sm:text-2xl text-slate-300 mb-3 mono">
+          <span id="typewriter" class="caret"></span>
+        </p>
+        <p class="text-slate-400 max-w-lg mb-8 leading-relaxed" data-en="A frontend-leaning full-stack engineer who builds calm, performant, and accessible interfaces. I turn vague ideas into shipped products." data-id="Seorang full-stack engineer yang berfokus pada frontend, membangun antarmuka yang tenang, cepat, dan aksesibel. Saya mengubah ide samar menjadi produk yang siap rilis.">A frontend-leaning full-stack engineer who builds calm, performant, and accessible interfaces. I turn vague ideas into shipped products.</p>
+        <div class="flex flex-wrap gap-4">
+          <a href="#projects" class="btn-neon px-6 py-3 rounded-md font-medium text-sm flex items-center gap-2">
+            <span data-en="View Projects" data-id="Lihat Proyek">View Projects</span>
+            <i class="fa-solid fa-arrow-right text-xs"></i>
+          </a>
+          <a href="#contact" class="px-6 py-3 rounded-md font-medium text-sm text-slate-300 border border-slate-700 hover:border-cyan-400/50 hover:text-cyan-300 transition flex items-center gap-2">
+            <i class="fa-solid fa-paper-plane text-xs"></i>
+            <span data-en="Get in touch" data-id="Hubungi saya">Get in touch</span>
+          </a>
+        </div>
+      </div>
+      <div class="relative hidden lg:flex items-center justify-center h-[440px]">
+        <div class="absolute w-72 h-72 rounded-full border border-cyan-400/20 animate-pulse"></div>
+        <div class="absolute w-96 h-96 rounded-full border border-cyan-400/10"></div>
+        <div class="ring ring-1 absolute w-[280px] h-[280px]"></div>
+        <div class="ring ring-2 absolute w-[200px] h-[200px]"></div>
+        <div class="relative w-40 h-40 rounded-full neon-box flex items-center justify-center">
+          <div class="text-center">
+            <div class="mono text-5xl font-bold neon-text">R</div>
+            <div class="mono text-[10px] text-cyan-300/70 mt-1 tracking-widest" data-en="EST. 2019" data-id="SEJAK 2019">EST. 2019</div>
+          </div>
+        </div>
+        <div class="float-icon absolute top-8 left-4 mono text-xs px-3 py-1.5 rounded-md neon-box text-cyan-300" style="animation-delay:0s">React</div>
+        <div class="float-icon absolute top-20 right-2 mono text-xs px-3 py-1.5 rounded-md neon-box text-cyan-300" style="animation-delay:.6s">TypeScript</div>
+        <div class="float-icon absolute bottom-16 left-0 mono text-xs px-3 py-1.5 rounded-md neon-box text-cyan-300" style="animation-delay:1.2s">Node.js</div>
+        <div class="float-icon absolute bottom-8 right-6 mono text-xs px-3 py-1.5 rounded-md neon-box text-cyan-300" style="animation-delay:1.8s">Postgres</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="py-24 px-5 sm:px-8 max-w-7xl mx-auto">
+    <div class="reveal">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="mono text-xs text-cyan-400/70">01 //</span>
+        <span class="mono text-xs text-cyan-400/70 tracking-widest" data-en="ABOUT" data-id="TENTANG">ABOUT</span>
+      </div>
+      <h2 class="text-3xl sm:text-5xl font-light mb-12" data-en="More than just code." data-id="Lebih dari sekadar kode.">More than just code.</h2>
+      <div class="grid lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2 neon-box p-7">
+          <p class="text-slate-300 leading-relaxed mb-5" data-en="I'm a software engineer based in Jakarta with five years of experience shipping products across fintech, logistics, and developer tooling. My work lives at the intersection of clean engineering and thoughtful design — fast pages, sensible state, and interfaces that don't fight the user." data-id="Saya seorang software engineer berbasis di Jakarta dengan pengalaman lima tahun merilis produk di sektor fintech, logistik, dan developer tooling. Karya saya berada di persimpangan antara engineering yang rapi dan desain yang matang — halaman cepat, state yang masuk akal, dan antarmuka yang tidak menyulitkan pengguna.">I'm a software engineer based in Jakarta with five years of experience shipping products across fintech, logistics, and developer tooling. My work lives at the intersection of clean engineering and thoughtful design — fast pages, sensible state, and interfaces that don't fight the user.</p>
+          <p class="text-slate-400 leading-relaxed" data-en="When I'm not at a keyboard you'll find me restoring mechanical keyboards, brewing pour-overs, and contributing to small open-source libraries." data-id="Saat tidak di depan keyboard, saya biasanya memugar mechanical keyboard, menyeduh pour-over, dan berkontribusi pada library open-source kecil.">When I'm not at a keyboard you'll find me restoring mechanical keyboards, brewing pour-overs, and contributing to small open-source libraries.</p>
+          <div class="grid grid-cols-3 gap-4 mt-8 pt-6 border-t border-cyan-400/10">
+            <div><div class="text-3xl font-bold neon-text-soft">5+</div><div class="text-xs text-slate-400 mt-1 mono" data-en="years experience" data-id="tahun pengalaman">years experience</div></div>
+            <div><div class="text-3xl font-bold neon-text-soft">40+</div><div class="text-xs text-slate-400 mt-1 mono" data-en="projects shipped" data-id="proyek dirilis">projects shipped</div></div>
+            <div><div class="text-3xl font-bold neon-text-soft">12</div><div class="text-xs text-slate-400 mt-1 mono" data-en="open-source repos" data-id="repo open-source">open-source repos</div></div>
+          </div>
+        </div>
+        <div class="space-y-4">
+          <a href="#" download class="btn-neon p-6 rounded-xl block group">
+            <div class="flex items-start justify-between mb-3">
+              <i class="fa-solid fa-file-arrow-down text-2xl text-cyan-300"></i>
+              <i class="fa-solid fa-arrow-down text-xs text-cyan-400/50 group-hover:translate-y-1 transition"></i>
+            </div>
+            <div class="font-semibold mb-1" data-en="Download CV" data-id="Unduh CV">Download CV</div>
+            <div class="text-xs text-slate-400 mono">raven-cv-2024.pdf</div>
+          </a>
+          <div class="neon-box p-5 rounded-xl">
+            <div class="mono text-xs text-cyan-400/70 mb-3 tracking-widest" data-en="CURRENTLY" data-id="SAAT INI">CURRENTLY</div>
+            <div class="text-sm text-slate-300" data-en="Senior Frontend Engineer at Lumen Labs — building internal data tooling." data-id="Senior Frontend Engineer di Lumen Labs — membangun tooling data internal.">Senior Frontend Engineer at Lumen Labs — building internal data tooling.</div>
+          </div>
+          <div class="neon-box p-5 rounded-xl">
+            <div class="mono text-xs text-cyan-400/70 mb-3 tracking-widest" data-en="LOCATION" data-id="LOKASI">LOCATION</div>
+            <div class="text-sm text-slate-300 flex items-center gap-2"><i class="fa-solid fa-location-dot text-cyan-400 text-xs"></i> Jakarta, ID — <span data-en="UTC+7" data-id="UTC+7">UTC+7</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="py-24 px-5 sm:px-8 max-w-7xl mx-auto">
+    <div class="reveal">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="mono text-xs text-cyan-400/70">02 //</span>
+        <span class="mono text-xs text-cyan-400/70 tracking-widest" data-en="PROJECTS" data-id="PROYEK">PROJECTS</span>
+      </div>
+      <div class="flex flex-wrap items-end justify-between gap-4 mb-12">
+        <h2 class="text-3xl sm:text-5xl font-light" data-en="Things I've built." data-id="Hal yang saya bangun.">Things I've built.</h2>
+        <p class="text-slate-400 max-w-md text-sm" data-en="A small selection of work — open-source, side projects, and client builds." data-id="Sebagian kecil karya — open-source, proyek sampingan, dan klien.">A small selection of work — open-source, side projects, and client builds.</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <article class="neon-box overflow-hidden group">
+          <div class="project-img flex items-center justify-center"><i class="fa-solid fa-chart-line text-5xl text-cyan-400/40 float-icon"></i></div>
+          <div class="p-6">
+            <div class="flex items-center gap-2 mb-2"><span class="mono text-[10px] px-2 py-0.5 rounded bg-cyan-400/10 text-cyan-300">Web App</span><span class="mono text-[10px] text-slate-500">2024</span></div>
+            <h3 class="text-xl font-semibold mb-2 group-hover:neon-text-soft transition" data-en="Pulse Analytics" data-id="Pulse Analytics">Pulse Analytics</h3>
+            <p class="text-sm text-slate-400 leading-relaxed mb-4" data-en="A real-time product analytics dashboard with sub-100ms streaming aggregation and a custom charting layer." data-id="Dashboard analitik produk real-time dengan agregasi streaming di bawah 100ms dan lapisan charting kustom.">A real-time product analytics dashboard with sub-100ms streaming aggregation and a custom charting layer.</p>
+            <div class="flex flex-wrap gap-2 mb-4"><span class="mono text-[10px] text-cyan-400/70">React</span><span class="mono text-[10px] text-cyan-400/70">D3.js</span><span class="mono text-[10px] text-cyan-400/70">WebSocket</span><span class="mono text-[10px] text-cyan-400/70">Rust</span></div>
+            <div class="flex gap-4 text-sm">
+              <a href="#" class="text-cyan-300 hover:text-cyan-100 flex items-center gap-1.5"><i class="fa-solid fa-arrow-up-right-from-square text-xs"></i> <span data-en="Live" data-id="Demo">Live</span></a>
+              <a href="#" class="text-slate-400 hover:text-cyan-300 flex items-center gap-1.5"><i class="fa-brands fa-github text-xs"></i> <span>Code</span></a>
+            </div>
+          </div>
+        </article>
+        <article class="neon-box overflow-hidden group">
+          <div class="project-img flex items-center justify-center"><i class="fa-solid fa-keyboard text-5xl text-cyan-400/40 float-icon"></i></div>
+          <div class="p-6">
+            <div class="flex items-center gap-2 mb-2"><span class="mono text-[10px] px-2 py-0.5 rounded bg-cyan-400/10 text-cyan-300">Open Source</span><span class="mono text-[10px] text-slate-500">2023</span></div>
+            <h3 class="text-xl font-semibold mb-2 group-hover:neon-text-soft transition" data-en="Keycap CLI" data-id="Keycap CLI">Keycap CLI</h3>
+            <p class="text-sm text-slate-400 leading-relaxed mb-4" data-en="A command-line tool that compiles and flashes custom keyboard layouts locally — no account, no cloud, just QMK with friendlier ergonomics." data-id="Tool command-line yang mengompilasi dan men-flash layout keyboard kustom secara lokal — tanpa akun, tanpa cloud, hanya QMK dengan ergonomi yang lebih ramah.">A command-line tool that compiles and flashes custom keyboard layouts locally — no account, no cloud, just QMK with friendlier ergonomics.</p>
+            <div class="flex flex-wrap gap-2 mb-4"><span class="mono text-[10px] text-cyan-400/70">TypeScript</span><span class="mono text-[10px] text-cyan-400/70">Node</span><span class="mono text-[10px] text-cyan-400/70">Ink</span></div>
+            <div class="flex gap-4 text-sm">
+              <a href="#" class="text-cyan-300 hover:text-cyan-100 flex items-center gap-1.5"><i class="fa-brands fa-github text-xs"></i> <span>Repository</span></a>
+              <a href="#" class="text-slate-400 hover:text-cyan-300 flex items-center gap-1.5"><i class="fa-solid fa-book text-xs"></i> <span data-en="Docs" data-id="Dokumen">Docs</span></a>
+            </div>
+          </div>
+        </article>
+        <article class="neon-box overflow-hidden group">
+          <div class="project-img flex items-center justify-center"><i class="fa-solid fa-truck-fast text-5xl text-cyan-400/40 float-icon"></i></div>
+          <div class="p-6">
+            <div class="flex items-center gap-2 mb-2"><span class="mono text-[10px] px-2 py-0.5 rounded bg-cyan-400/10 text-cyan-300">Client Work</span><span class="mono text-[10px] text-slate-500">2023</span></div>
+            <h3 class="text-xl font-semibold mb-2 group-hover:neon-text-soft transition" data-en="Cargo Atlas" data-id="Cargo Atlas">Cargo Atlas</h3>
+            <p class="text-sm text-slate-400 leading-relaxed mb-4" data-en="A logistics routing platform handling 30k daily shipments across Southeast Asia, with a map-driven dispatcher UI." data-id="Platform routing logistik yang menangani 30 ribu pengiriman harian di Asia Tenggara, dengan UI dispatcher berbasis peta.">A logistics routing platform handling 30k daily shipments across Southeast Asia, with a map-driven dispatcher UI.</p>
+            <div class="flex flex-wrap gap-2 mb-4"><span class="mono text-[10px] text-cyan-400/70">Next.js</span><span class="mono text-[10px] text-cyan-400/70">Mapbox</span><span class="mono text-[10px] text-cyan-400/70">PostGIS</span></div>
+            <div class="flex gap-4 text-sm"><a href="#" class="text-cyan-300 hover:text-cyan-100 flex items-center gap-1.5"><i class="fa-solid fa-arrow-up-right-from-square text-xs"></i> <span data-en="Case Study" data-id="Studi Kasus">Case Study</span></a></div>
+          </div>
+        </article>
+        <article class="neon-box overflow-hidden group">
+          <div class="project-img flex items-center justify-center"><i class="fa-solid fa-wallet text-5xl text-cyan-400/40 float-icon"></i></div>
+          <div class="p-6">
+            <div class="flex items-center gap-2 mb-2"><span class="mono text-[10px] px-2 py-0.5 rounded bg-cyan-400/10 text-cyan-300">Fintech</span><span class="mono text-[10px] text-slate-500">2022</span></div>
+            <h3 class="text-xl font-semibold mb-2 group-hover:neon-text-soft transition" data-en="Ledgr" data-id="Ledgr">Ledgr</h3>
+            <p class="text-sm text-slate-400 leading-relaxed mb-4" data-en="A double-entry personal finance app with offline-first sync and an obsessively minimalist ledger view." data-id="Aplikasi keuangan pribadi double-entry dengan sinkronisasi offline-first dan tampilan ledger yang sangat minimalis.">A double-entry personal finance app with offline-first sync and an obsessively minimalist ledger view.</p>
+            <div class="flex flex-wrap gap-2 mb-4"><span class="mono text-[10px] text-cyan-400/70">SvelteKit</span><span class="mono text-[10px] text-cyan-400/70">SQLite</span><span class="mono text-[10px] text-cyan-400/70">CRDT</span></div>
+            <div class="flex gap-4 text-sm">
+              <a href="#" class="text-cyan-300 hover:text-cyan-100 flex items-center gap-1.5"><i class="fa-solid fa-arrow-up-right-from-square text-xs"></i> <span data-en="Live" data-id="Demo">Live</span></a>
+              <a href="#" class="text-slate-400 hover:text-cyan-300 flex items-center gap-1.5"><i class="fa-brands fa-github text-xs"></i> <span>Code</span></a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="py-24 px-5 sm:px-8 max-w-7xl mx-auto">
+    <div class="reveal">
+      <div class="flex items-center gap-3 mb-3"><span class="mono text-xs text-cyan-400/70">03 //</span><span class="mono text-xs text-cyan-400/70 tracking-widest" data-en="SKILLS" data-id="KEAHLIAN">SKILLS</span></div>
+      <h2 class="text-3xl sm:text-5xl font-light mb-12" data-en="Tools of the trade." data-id="Perangkat kerja.">Tools of the trade.</h2>
+      <div class="grid lg:grid-cols-2 gap-8">
+        <div class="neon-box p-7">
+          <div class="flex items-center gap-3 mb-7">
+            <div class="w-10 h-10 rounded-lg bg-cyan-400/10 flex items-center justify-center"><i class="fa-solid fa-code text-cyan-300"></i></div>
+            <h3 class="text-xl font-semibold" data-en="Technical Skills" data-id="Keahlian Teknis">Technical Skills</h3>
+          </div>
+          <div class="space-y-5">
+            <div><div class="flex justify-between mb-2"><span class="text-sm text-slate-300">JavaScript / TypeScript</span><span class="mono text-xs text-cyan-400/70">95%</span></div><div class="skill-bar"><div class="skill-fill" data-w="95%"></div></div></div>
+            <div><div class="flex justify-between mb-2"><span class="text-sm text-slate-300">React / Next.js</span><span class="mono text-xs text-cyan-400/70">92%</span></div><div class="skill-bar"><div class="skill-fill" data-w="92%"></div></div></div>
+            <div><div class="flex justify-between mb-2"><span class="text-sm text-slate-300">Node.js / Bun</span><span class="mono text-xs text-cyan-400/70">85%</span></div><div class="skill-bar"><div class="skill-fill" data-w="85%"></div></div></div>
+            <div><div class="flex justify-between mb-2"><span class="text-sm text-slate-300">CSS / Tailwind / Motion</span><span class="mono text-xs text-cyan-400/70">90%</span></div><div class="skill-bar"><div class="skill-fill" data-w="90%"></div></div></div>
+            <div><div class="flex justify-between mb-2"><span class="text-sm text-slate-300">PostgreSQL / Redis</span><span class="mono text-xs text-cyan-400/70">80%</span></div><div class="skill-bar"><div class="skill-fill" data-w="80%"></div></div></div>
+            <div><div class="flex justify-between mb-2"><span class="text-sm text-slate-300">Docker / CI / Cloud</span><span class="mono text-xs text-cyan-400/70">78%</span></div><div class="skill-bar"><div class="skill-fill" data-w="78%"></div></div></div>
+          </div>
+        </div>
+        <div class="neon-box p-7">
+          <div class="flex items-center gap-3 mb-7">
+            <div class="w-10 h-10 rounded-lg bg-cyan-400/10 flex items-center justify-center"><i class="fa-solid fa-handshake text-cyan-300"></i></div>
+            <h3 class="text-xl font-semibold" data-en="Soft Skills" data-id="Keahlian Non-Teknis">Soft Skills</h3>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-3">
+            <div class="p-4 rounded-lg border border-cyan-400/15 hover:border-cyan-400/50 transition"><div class="flex items-center gap-2 mb-1.5"><i class="fa-solid fa-comments text-cyan-400 text-sm float-icon"></i><span class="text-sm font-medium" data-en="Communication" data-id="Komunikasi">Communication</span></div><p class="text-xs text-slate-400" data-en="Translating technical trade-offs into plain language for stakeholders." data-id="Menerjemahkan pertimbangan teknis ke bahasa sederhana untuk stakeholder.">Translating technical trade-offs into plain language for stakeholders.</p></div>
+            <div class="p-4 rounded-lg border border-cyan-400/15 hover:border-cyan-400/50 transition"><div class="flex items-center gap-2 mb-1.5"><i class="fa-solid fa-people-group text-cyan-400 text-sm float-icon"></i><span class="text-sm font-medium" data-en="Mentorship" data-id="Pembimbingan">Mentorship</span></div><p class="text-xs text-slate-400" data-en="Onboarding juniors and running weekly code-review sessions." data-id="Membimbing junior dan memimpin sesi code-review mingguan.">Onboarding juniors and running weekly code-review sessions.</p></div>
+            <div class="p-4 rounded-lg border border-cyan-400/15 hover:border-cyan-400/50 transition"><div class="flex items-center gap-2 mb-1.5"><i class="fa-solid fa-lightbulb text-cyan-400 text-sm float-icon"></i><span class="text-sm font-medium" data-en="Problem Framing" data-id="Pembingkaian Masalah">Problem Framing</span></div><p class="text-xs text-slate-400" data-en="Defining the right question before reaching for a solution." data-id="Menentukan pertanyaan yang tepat sebelum mencari solusi.">Defining the right question before reaching for a solution.</p></div>
+            <div class="p-4 rounded-lg border border-cyan-400/15 hover:border-cyan-400/50 transition"><div class="flex items-center gap-2 mb-1.5"><i class="fa-solid fa-clock text-cyan-400 text-sm float-icon"></i><span class="text-sm font-medium" data-en="Self-Direction" data-id="Mandiri">Self-Direction</span></div><p class="text-xs text-slate-400" data-en="Owning ambiguous projects end-to-end without hand-holding." data-id="Mengelola proyek ambigu secara menyeluruh tanpa pengawasan ketat.">Owning ambiguous projects end-to-end without hand-holding.</p></div>
+            <div class="p-4 rounded-lg border border-cyan-400/15 hover:border-cyan-400/50 transition"><div class="flex items-center gap-2 mb-1.5"><i class="fa-solid fa-handshake-angle text-cyan-400 text-sm float-icon"></i><span class="text-sm font-medium" data-en="Empathy" data-id="Empati">Empathy</span></div><p class="text-xs text-slate-400" data-en="Designing with accessibility and real-user constraints in mind." data-id="Berkarya dengan mempertimbangkan aksesibilitas dan batasan pengguna nyata.">Designing with accessibility and real-user constraints in mind.</p></div>
+            <div class="p-4 rounded-lg border border-cyan-400/15 hover:border-cyan-400/50 transition"><div class="flex items-center gap-2 mb-1.5"><i class="fa-solid fa-bolt text-cyan-400 text-sm float-icon"></i><span class="text-sm font-medium" data-en="Adaptability" data-id="Adaptabilitas">Adaptability</span></div><p class="text-xs text-slate-400" data-en="Switching stacks and wearing multiple hats as the team needs." data-id="Berpindah antar tech stack sesuai kebutuhan tim.">Switching stacks and wearing multiple hats as the team needs.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE & EDUCATION -->
+  <section id="experience" class="py-24 px-5 sm:px-8 max-w-7xl mx-auto">
+    <div class="reveal">
+      <div class="flex items-center gap-3 mb-3"><span class="mono text-xs text-cyan-400/70">04 //</span><span class="mono text-xs text-cyan-400/70 tracking-widest" data-en="JOURNEY" data-id="PERJALANAN">JOURNEY</span></div>
+      <h2 class="text-3xl sm:text-5xl font-light mb-12" data-en="Experience & education." data-id="Pengalaman & pendidikan.">Experience & education.</h2>
+      <div class="grid lg:grid-cols-2 gap-12">
+        <div>
+          <h3 class="mono text-sm text-cyan-400/70 mb-6 tracking-widest flex items-center gap-2"><i class="fa-solid fa-briefcase"></i><span data-en="EXPERIENCE" data-id="PENGALAMAN">EXPERIENCE</span></h3>
+          <div class="relative pl-9">
+            <div class="timeline-line"></div>
+            <div class="relative mb-10"><div class="timeline-dot absolute -left-9 top-1"></div><div class="neon-box p-5"><div class="flex flex-wrap justify-between gap-2 mb-1"><h4 class="font-semibold" data-en="Senior Frontend Engineer" data-id="Senior Frontend Engineer">Senior Frontend Engineer</h4><span class="mono text-xs text-cyan-400/70">2022 — Now</span></div><div class="text-sm text-cyan-300 mb-2">Lumen Labs</div><p class="text-sm text-slate-400 leading-relaxed" data-en="Lead the design-system rebuild, cut bundle size by 47%, and mentor three mid-level engineers. Owner of the data-viz library used across six internal products." data-id="Memimpin pembangunan ulang design system, memangkas ukuran bundle sebesar 47%, dan membimbing tiga engineer mid-level. Pemilik library visualisasi data yang digunakan di enam produk internal.">Lead the design-system rebuild, cut bundle size by 47%, and mentor three mid-level engineers. Owner of the data-viz library used across six internal products.</p></div></div>
+            <div class="relative mb-10"><div class="timeline-dot absolute -left-9 top-1"></div><div class="neon-box p-5"><div class="flex flex-wrap justify-between gap-2 mb-1"><h4 class="font-semibold" data-en="Full-Stack Engineer" data-id="Full-Stack Engineer">Full-Stack Engineer</h4><span class="mono text-xs text-cyan-400/70">2020 — 2022</span></div><div class="text-sm text-cyan-300 mb-2">Cargo Atlas</div><p class="text-sm text-slate-400 leading-relaxed" data-en="Built the dispatcher UI and routing engine from scratch. Shipped the MVP in four months and scaled it to 30k daily shipments." data-id="Membangun UI dispatcher dan mesin routing dari nol. Merilis MVP dalam empat bulan dan menskalakannya hingga 30 ribu pengiriman harian.">Built the dispatcher UI and routing engine from scratch. Shipped the MVP in four months and scaled it to 30k daily shipments.</p></div></div>
+            <div class="relative"><div class="timeline-dot absolute -left-9 top-1"></div><div class="neon-box p-5"><div class="flex flex-wrap justify-between gap-2 mb-1"><h4 class="font-semibold" data-en="Junior Web Developer" data-id="Junior Web Developer">Junior Web Developer</h4><span class="mono text-xs text-cyan-400/70">2019 — 2020</span></div><div class="text-sm text-cyan-300 mb-2">Northwind Studio</div><p class="text-sm text-slate-400 leading-relaxed" data-en="Delivered marketing sites and small web apps for local clients. First exposure to CI/CD and accessibility audits." data-id="Membangun situs pemasaran dan aplikasi web kecil untuk klien lokal. Pertama kali terpapar CI/CD dan audit aksesibilitas.">Delivered marketing sites and small web apps for local clients. First exposure to CI/CD and accessibility audits.</p></div></div>
+          </div>
+        </div>
+        <div>
+          <h3 class="mono text-sm text-cyan-400/70 mb-6 tracking-widest flex items-center gap-2"><i class="fa-solid fa-graduation-cap"></i><span data-en="EDUCATION" data-id="PENDIDIKAN">EDUCATION</span></h3>
+          <div class="relative pl-9">
+            <div class="timeline-line"></div>
+            <div class="relative mb-10"><div class="timeline-dot absolute -left-9 top-1"></div><div class="neon-box p-5"><div class="flex flex-wrap justify-between gap-2 mb-1"><h4 class="font-semibold" data-en="B.Sc. Computer Science" data-id="S.Kom. Ilmu Komputer">B.Sc. Computer Science</h4><span class="mono text-xs text-cyan-400/70">2015 — 2019</span></div><div class="text-sm text-cyan-300 mb-2">University of Indonesia</div><p class="text-sm text-slate-400 leading-relaxed" data-en="Thesis on real-time collaborative editing using CRDTs. Graduated cum laude with a 3.78 GPA." data-id="Skripsi tentang penyuntingan kolaboratif real-time menggunakan CRDT. Lulus cum laude dengan IPK 3.78.">Thesis on real-time collaborative editing using CRDTs. Graduated cum laude with a 3.78 GPA.</p></div></div>
+            <div class="relative mb-10"><div class="timeline-dot absolute -left-9 top-1"></div><div class="neon-box p-5"><div class="flex flex-wrap justify-between gap-2 mb-1"><h4 class="font-semibold" data-en="Reactor — Frontend Bootcamp" data-id="Reactor — Bootcamp Frontend">Reactor — Frontend Bootcamp</h4><span class="mono text-xs text-cyan-400/70">2019</span></div><div class="text-sm text-cyan-300 mb-2">Hacktiv8</div><p class="text-sm text-slate-400 leading-relaxed" data-en="A 12-week intensive program bridging academia and production-grade frontend engineering." data-id="Program intensif 12 minggu yang menjembatani akademisi dan rekayasa frontend tingkat produksi.">A 12-week intensive program bridging academia and production-grade frontend engineering.</p></div></div>
+            <div class="relative"><div class="timeline-dot absolute -left-9 top-1"></div><div class="neon-box p-5"><div class="flex flex-wrap justify-between gap-2 mb-1"><h4 class="font-semibold" data-en="Certifications" data-id="Sertifikasi">Certifications</h4><span class="mono text-xs text-cyan-400/70">Ongoing</span></div><div class="text-sm text-cyan-300 mb-2">AWS · CKA · a11y</div><p class="text-sm text-slate-400 leading-relaxed" data-en="AWS Solutions Architect Associate, Certified Kubernetes Administrator, and IAAP accessibility practitioner." data-id="AWS Solutions Architect Associate, Certified Kubernetes Administrator, dan praktisi aksesibilitas IAAP.">AWS Solutions Architect Associate, Certified Kubernetes Administrator, and IAAP accessibility practitioner.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-24 px-5 sm:px-8 max-w-7xl mx-auto">
+    <div class="reveal">
+      <div class="flex items-center gap-3 mb-3"><span class="mono text-xs text-cyan-400/70">05 //</span><span class="mono text-xs text-cyan-400/70 tracking-widest" data-en="CONTACT" data-id="KONTAK">CONTACT</span></div>
+      <h2 class="text-3xl sm:text-5xl font-light mb-3" data-en="Let's build something." data-id="Mari membangun sesuatu.">Let's build something.</h2>
+      <p class="text-slate-400 mb-12 max-w-lg" data-en="Open to freelance projects, full-time roles, and interesting collaborations. I usually reply within a day." data-id="Terbuka untuk proyek freelance, peran full-time, dan kolaborasi menarik. Biasanya membalas dalam sehari.">Open to freelance projects, full-time roles, and interesting collaborations. I usually reply within a day.</p>
+      <div class="grid lg:grid-cols-2 gap-8">
+        <form id="contactForm" class="neon-box p-7 space-y-5">
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label class="block text-xs mono text-cyan-400/70 mb-2 tracking-widest" data-en="NAME" data-id="NAMA">NAME</label>
+              <input type="text" required data-en-ph="Your name" data-id-ph="Nama Anda" class="w-full bg-transparent border-b border-cyan-400/20 focus:border-cyan-400 outline-none py-2 text-sm transition placeholder-slate-500" placeholder="Your name">
+            </div>
+            <div>
+              <label class="block text-xs mono text-cyan-400/70 mb-2 tracking-widest" data-en="EMAIL" data-id="EMAIL">EMAIL</label>
+              <input type="email" required data-en-ph="you@example.com" data-id-ph="anda@contoh.com" class="w-full bg-transparent border-b border-cyan-400/20 focus:border-cyan-400 outline-none py-2 text-sm transition placeholder-slate-500" placeholder="you@example.com">
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs mono text-cyan-400/70 mb-2 tracking-widest" data-en="MESSAGE" data-id="PESAN">MESSAGE</label>
+            <textarea required rows="5" data-en-ph="Tell me about the project..." data-id-ph="Ceritakan tentang proyek Anda..." class="w-full bg-transparent border-b border-cyan-400/20 focus:border-cyan-400 outline-none py-2 text-sm transition placeholder-slate-500 resize-none" placeholder="Tell me about the project..."></textarea>
+          </div>
+          <div class="flex items-center justify-between gap-4 pt-2">
+            <span class="text-xs text-slate-500 mono flex items-center gap-2"><span class="pulse-dot" style="width:6px;height:6px;"></span><span data-en="Encrypted in transit" data-id="Terenkripsi saat transit">Encrypted in transit</span></span>
+            <button type="submit" class="btn-neon px-6 py-2.5 rounded-md text-sm font-medium flex items-center gap-2"><span data-en="Send message" data-id="Kirim pesan">Send message</span><i class="fa-solid fa-paper-plane text-xs"></i></button>
+          </div>
+          <div id="formStatus" class="hidden text-sm text-cyan-300 pt-2 items-center gap-2"><i class="fa-solid fa-circle-check"></i><span data-en="Thanks! Your message has been queued." data-id="Terima kasih! Pesan Anda telah masuk antrian.">Thanks! Your message has been queued.</span></div>
+        </form>
+        <div class="space-y-4">
+          <a href="mailto:raven@aldrev.dev" class="neon-box p-5 flex items-center gap-4 group">
+            <div class="w-11 h-11 rounded-lg bg-cyan-400/10 flex items-center justify-center group-hover:bg-cyan-400/20 transition"><i class="fa-solid fa-envelope text-cyan-300"></i></div>
+            <div><div class="mono text-[10px] text-cyan-400/70 tracking-widest mb-0.5">EMAIL</div><div class="text-sm">raven@aldrev.dev</div></div>
+            <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-500 ml-auto group-hover:text-cyan-300 transition"></i>
+          </a>
+          <a href="#" class="neon-box p-5 flex items-center gap-4 group">
+            <div class="w-11 h-11 rounded-lg bg-cyan-400/10 flex items-center justify-center group-hover:bg-cyan-400/20 transition"><i class="fa-brands fa-github text-cyan-300"></i></div>
+            <div><div class="mono text-[10px] text-cyan-400/70 tracking-widest mb-0.5">GITHUB</div><div class="text-sm">github.com/raven-ald</div></div>
+            <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-500 ml-auto group-hover:text-cyan-300 transition"></i>
+          </a>
+          <a href="#" class="neon-box p-5 flex items-center gap-4 group">
+            <div class="w-11 h-11 rounded-lg bg-cyan-400/10 flex items-center justify-center group-hover:bg-cyan-400/20 transition"><i class="fa-brands fa-linkedin text-cyan-300"></i></div>
+            <div><div class="mono text-[10px] text-cyan-400/70 tracking-widest mb-0.5">LINKEDIN</div><div class="text-sm">linkedin.com/in/raven-ald</div></div>
+            <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-500 ml-auto group-hover:text-cyan-300 transition"></i>
+          </a>
+          <div class="neon-box p-5 flex items-center gap-4">
+            <div class="w-11 h-11 rounded-lg bg-cyan-400/10 flex items-center justify-center"><i class="fa-solid fa-clock text-cyan-300 float-icon"></i></div>
+            <div><div class="mono text-[10px] text-cyan-400/70 tracking-widest mb-0.5" data-en="RESPONSE TIME" data-id="WAKTU TANGGAP">RESPONSE TIME</div><div class="text-sm" data-en="Usually within 24 hours" data-id="Biasanya dalam 24 jam">Usually within 24 hours</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="border-t border-cyan-400/10 mt-12">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2.5">
+        <div class="relative w-6 h-6"><div class="ring ring-1 absolute inset-0" style="border-width:1px"></div><div class="pulse-dot absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style="width:5px;height:5px;"></div></div>
+        <span class="mono text-xs text-slate-400">© 2024 Raven Aldrich</span>
+      </div>
+      <div class="mono text-xs text-slate-500 flex items-center gap-2"><span class="pulse-dot" style="width:5px;height:5px;"></span><span data-en="Built with care, in Jakarta." data-id="Dibuat dengan hati-hati, di Jakarta.">Built with care, in Jakarta.</span></div>
+    </div>
+  </footer>
+
+</main>
+
+<script>
+  // Typewriter
+  const phrases = {
+    en: ["Frontend Engineer.","Full-Stack Developer.","Open-Source Tinkerer.","Keyboard Enthusiast."],
+    id: ["Frontend Engineer.","Full-Stack Developer.","Tinkerer Open-Source.","Penggemar Keyboard."]
+  };
+  let lang = 'en';
+  let phraseIdx = 0, charIdx = 0, deleting = false;
+  const tw = document.getElementById('typewriter');
+  function typeLoop(){
+    const list = phrases[lang];
+    const current = list[phraseIdx];
+    if(!deleting){
+      charIdx++;
+      tw.textContent = current.slice(0, charIdx);
+      if(charIdx === current.length){ deleting = true; setTimeout(typeLoop, 1800); return; }
+    } else {
+      charIdx--;
+      tw.textContent = current.slice(0, charIdx);
+      if(charIdx === 0){ deleting = false; phraseIdx = (phraseIdx+1) % list.length; }
+    }
+    setTimeout(typeLoop, deleting ? 45 : 90);
+  }
+  typeLoop();
+  
+  // Translation
+  const translateBtn = document.getElementById('translateBtn');
+  const langLabel = document.getElementById('langLabel');
+  function applyLang(newLang){
+    lang = newLang;
+    document.documentElement.lang = newLang;
+    document.querySelectorAll('[data-en]').forEach(el=>{
+      const val = el.getAttribute('data-' + newLang);
+      if(val) el.textContent = val;
+    });
+    document.querySelectorAll('[data-en-ph]').forEach(el=>{
+      const val = el.getAttribute('data-' + newLang + '-ph');
+      if(val) el.placeholder = val;
+    });
+    langLabel.textContent = newLang.toUpperCase();
+    translateBtn.classList.toggle('active', newLang === 'id');
+    charIdx = 0; deleting = false; phraseIdx = 0;
+  }
+  translateBtn.addEventListener('click', ()=> applyLang(lang === 'en' ? 'id' : 'en'));
+  
+  // Mobile menu
+  const mobileToggle = document.getElementById('mobileToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  mobileToggle.addEventListener('click', ()=>{
+    mobileMenu.classList.toggle('open');
+    mobileToggle.querySelector('i').className = mobileMenu.classList.contains('open') ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+  });
+  mobileMenu.querySelectorAll('a').forEach(a=>{
+    a.addEventListener('click', ()=>{
+      mobileMenu.classList.remove('open');
+      mobileToggle.querySelector('i').className = 'fa-solid fa-bars';
+    });
+  });
+  
+  // Active nav on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav .nav-link');
+  function updateActive(){
+    let current = '';
+    sections.forEach(s=>{ if(window.scrollY >= s.offsetTop - 120) current = s.id; });
+    navLinks.forEach(l=> l.classList.toggle('active', l.getAttribute('href') === '#' + current));
+  }
+  window.addEventListener('scroll', updateActive, {passive:true});
+  
+  // Reveal on scroll + skill bars
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        e.target.querySelectorAll('.skill-fill').forEach(bar=> bar.style.width = bar.dataset.w);
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  
+  // Contact form
+  const form = document.getElementById('contactForm');
+  const status = document.getElementById('formStatus');
+  form.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    status.classList.remove('hidden');
+    status.classList.add('flex');
+    form.reset();
+    setTimeout(()=>{ status.classList.add('hidden'); status.classList.remove('flex'); }, 4000);
+  });
+</script>
+</body>
+</html>
