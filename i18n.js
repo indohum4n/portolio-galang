@@ -48,7 +48,7 @@ const translations = {
     projects: {
       label: "PROJECTS",
       title: "Things I've built.",
-      subtitle: "A small selection of work — open-source, side projects, and client builds.",
+      subtitle: "A small selection of work — open-source, side projects, and school projects.",
       pulse_title: "Pulse Analytics",
       pulse_desc: "A real-time product analytics dashboard with sub-100ms streaming aggregation and a custom charting layer.",
       live: "Live",
