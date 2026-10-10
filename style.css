@@ -36,17 +36,17 @@
     box-shadow:0 0 12px var(--neon);animation:pulse 2s ease-in-out infinite;}
   @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(.85);}}
   
-  .ring{border:1.5px solid rgba(77,217,255,.25);border-radius:50%;position:relative;}
-  .ring::after{content:'';position:absolute;top:-3px;left:50%;width:6px;height:6px;border-radius:50%;
+  .neon-ring{border:1.5px solid rgba(77,217,255,.25);border-radius:50%;position:relative;}
+  .neon-ring::after{content:'';position:absolute;top:-3px;left:50%;width:6px;height:6px;border-radius:50%;
     background:var(--neon);box-shadow:0 0 10px var(--neon);transform:translateX(-50%);}
-  .ring-1{animation:spin 12s linear infinite;}
-  .ring-2{animation:spin 18s linear infinite reverse;}
+  .neon-ring-1{animation:spin 12s linear infinite;}
+  .neon-ring-2{animation:spin 18s linear infinite reverse;}
   @keyframes spin{to{transform:rotate(360deg);}}
   
   .float-icon{animation:floatIcon 4s ease-in-out infinite;}
   @keyframes floatIcon{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
   
-  .caret::after{content:'|';margin-left:2px;color:var(--neon);animation:blink 1s step-end infinite;}
+  .neon-caret::after{content:'|';margin-left:2px;color:var(--neon);animation:blink 1s step-end infinite;}
   @keyframes blink{50%{opacity:0;}}
   
   .btn-neon{position:relative;background:linear-gradient(135deg,rgba(77,217,255,.15),rgba(77,217,255,.05));
