@@ -29,7 +29,7 @@ const translations = {
       view_projects: "View Projects",
       contact: "Contact Me",
       est: "EST. 2019",
-      typewriter: ["Frontend Engineer.", "Full-Stack Developer.", "Open-Source Tinkerer.", "Keyboard Enthusiast."]
+      typewriter: ["Frontend Engineer.", "Full-Stack Web Development Learner.", "Open-Source Tinkerer.", "IoT Enthusiast."]
     },
     about: {
       label: "ABOUT",
@@ -134,7 +134,7 @@ const translations = {
       view_projects: "Lihat Proyek",
       contact: "Hubungi saya",
       est: "SEJAK 2019",
-      typewriter: ["Frontend Engineer.", "Full-Stack Developer.", "Tinkerer Open-Source.", "Penggemar Keyboard."]
+      typewriter: ["Frontend Engineer.", "Full-Stack Developer.", "Tinkerer Open-Source.", "IoT Enthusiast."]
     },
     about: {
       label: "TENTANG",
