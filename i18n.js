@@ -50,7 +50,7 @@ const translations = {
       title: "Things I've built.",
       subtitle: "A small selection of work — open-source, side projects, and school projects.",
       pulse_title: "Kue Tart Turen Official Website",
-      pulse_desc: "Designed and developed a responsive landing page for a shop Kue Tart Turen to showcase cake collections, provide business information, and make it easier for customers to explore products and contact the business.",
+      pulse_desc: "Designed and developed a responsive landing page for the Kue Tart Turen store to showcase cake collections, provide business information, and make it easier for customers to explore products and contact the business.",
       live: "Live",
       keycap_title: "Keycap CLI",
       keycap_desc: "A command-line tool that compiles and flashes custom keyboard layouts locally — no account, no cloud, just QMK with friendlier ergonomics.",
