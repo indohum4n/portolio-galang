@@ -115,6 +115,10 @@ const translations = {
     },
     footer: {
       built: "Built with care, in Jakarta."
+    },
+    toast: {
+    title: "Switch Language?",
+    desc: "You can change the language using the button at the top right."
     }
   },
   id: {
@@ -220,6 +224,10 @@ const translations = {
     },
     footer: {
       built: "Dibuat dengan hati-hati, di Jakarta."
+    },
+    toast: {
+    title: "Ganti Bahasa?",
+    desc: "Anda bisa mengubah bahasa menggunakan tombol di kanan atas."
     }
   }
 };

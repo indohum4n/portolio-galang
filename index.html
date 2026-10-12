@@ -192,7 +192,7 @@
              <img src="assets/peminjaman_alat.webp" alt="">
           </div>
           <div class="p-6">
-            <div class="flex items-center gap-2 mb-2"><span class="mono text-[10px] px-2 py-0.5 rounded bg-cyan-400/10 text-cyan-300">Open Source</span><span class="mono text-[10px] text-slate-500">2023</span></div>
+            <div class="flex items-center gap-2 mb-2"><span class="mono text-[10px] px-2 py-0.5 rounded bg-cyan-400/10 text-cyan-300">Academic Assessment</span><span class="mono text-[10px] text-slate-500">2026</span></div>
             <h3 class="text-xl font-semibold mb-2 group-hover:neon-text-soft transition" data-i18n="projects.keycap_title">Keycap CLI</h3>
             <p class="text-sm text-slate-400 leading-relaxed mb-4" data-i18n="projects.keycap_desc">A command-line tool that compiles and flashes custom keyboard layouts locally — no account, no cloud, just QMK with friendlier ergonomics.</p>
             <div class="flex flex-wrap gap-2 mb-4"><span class="mono text-[10px] text-cyan-400/70">PHP</span><span class="mono text-[10px] text-cyan-400/70">MySQL</span><span class="mono text-[10px] text-cyan-400/70">HTML</span><span class="mono text-[10px] text-cyan-400/70">JavaScript</span></div>
@@ -203,9 +203,12 @@
           </div>
         </article>
         <article class="neon-box overflow-hidden group">
-          <div class="project-img flex items-center justify-center"><i class="fa-solid fa-truck-fast text-5xl text-cyan-400/40 float-icon"></i></div>
+          <div class="project-img flex items-center justify-center">
+            <!-- <i class="fa-solid fa-truck-fast text-5xl text-cyan-400/40 float-icon"></i> -->
+            <img src="assets/absensisiswa.webp" alt="">
+          </div>
           <div class="p-6">
-            <div class="flex items-center gap-2 mb-2"><span class="mono text-[10px] px-2 py-0.5 rounded bg-cyan-400/10 text-cyan-300">Client Work</span><span class="mono text-[10px] text-slate-500">2023</span></div>
+            <div class="flex items-center gap-2 mb-2"><span class="mono text-[10px] px-2 py-0.5 rounded bg-cyan-400/10 text-cyan-300">Academic Assessment</span><span class="mono text-[10px] text-slate-500">2023</span></div>
             <h3 class="text-xl font-semibold mb-2 group-hover:neon-text-soft transition" data-i18n="projects.cargo_title">Cargo Atlas</h3>
             <p class="text-sm text-slate-400 leading-relaxed mb-4" data-i18n="projects.cargo_desc">A logistics routing platform handling 30k daily shipments across Southeast Asia, with a map-driven dispatcher UI.</p>
             <div class="flex flex-wrap gap-2 mb-4"><span class="mono text-[10px] text-cyan-400/70">Next.js</span><span class="mono text-[10px] text-cyan-400/70">Mapbox</span><span class="mono text-[10px] text-cyan-400/70">PostGIS</span></div>
@@ -359,5 +362,18 @@
   </footer>
 
 </main>
+<!-- LANGUAGE TOAST NOTIFICATION -->
+<div id="langToast" class="fixed bottom-6 right-6 z-[100] opacity-0 translate-y-4 pointer-events-none transition-all duration-500 ease-out">
+  <div class="neon-box relative p-4 pr-8 flex items-start gap-3 max-w-[280px]">
+    <i class="fa-solid fa-language text-cyan-300 text-xl mt-0.5"></i>
+    <div>
+      <p class="text-sm font-medium neon-text-soft" data-i18n="toast.title">Switch Language?</p>
+      <p class="text-xs text-slate-400 mt-1 leading-relaxed" data-i18n="toast.desc">You can change the language using the button at the top right.</p>
+    </div>
+    <button id="closeToast" class="absolute top-2 right-3 text-slate-500 hover:text-cyan-300 transition text-sm">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+</div>
 </body>
 </html>

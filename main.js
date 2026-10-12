@@ -138,6 +138,39 @@
     setTimeout(() => {
       status.classList.add('hidden');
       status.classList.remove('flex');
-    }, 4000);
+    }, 10000);
   });
+
+    // ──────────────────────────────────────────────────────────────
+  // 7. LANGUAGE TOAST NOTIFICATION
+  // ──────────────────────────────────────────────────────────────
+  const langToast = document.getElementById('langToast');
+  const closeToastBtn = document.getElementById('closeToast');
+
+  function showLangToast() {
+    if (!langToast) return;
+    // Muncul setelah 2 detik web dibuka
+    setTimeout(() => {
+      langToast.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+      langToast.classList.add('opacity-100', 'translate-y-0');
+    }, 2000);
+
+    // Hilang otomatis setelah 9 detik
+    setTimeout(() => hideLangToast(), 9000);
+  }
+
+  function hideLangToast() {
+    if (!langToast) return;
+    langToast.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+    langToast.classList.remove('opacity-100', 'translate-y-0');
+  }
+
+  // Jika tombol close (X) diklik
+  if (closeToastBtn) closeToastBtn.addEventListener('click', hideLangToast);
+  
+  // Jika tombol translate diklik, langsung sembunyikan toast
+  translateBtn.addEventListener('click', hideLangToast);
+
+  // Jalankan notifikasi
+  showLangToast();
 })();
