@@ -85,12 +85,47 @@
   
   .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s;}
   .reveal.visible{opacity:1;transform:translateY(0);}
-  
-  .project-img{aspect-ratio:16/10;background:linear-gradient(135deg,rgba(77,217,255,.15),rgba(10,14,26,.8));
-    position:relative;overflow:hidden;}
-  .project-img::after{content:'';position:absolute;inset:0;
-    background:repeating-linear-gradient(45deg,transparent,transparent 10px,rgba(77,217,255,.03) 10px,rgba(77,217,255,.03) 20px);}
-  
+  .project-img {
+  aspect-ratio: 16/10;
+  background: linear-gradient(135deg, rgba(77,217,255,.15), rgba(10,14,26,.8));
+  position: relative;
+  overflow: hidden;
+}
+
+/* Agar gambar rapi memenuhi kotak */
+.project-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+  z-index: 1;
+  transition: transform .4s ease;
+}
+
+/* Overlay transparan di atas gambar saat hover */
+.project-img::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(135deg, rgba(77,217,255,.25), rgba(10,14,26,.5));
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+.group:hover .project-img::before {
+  opacity: 1;
+}
+
+/* Pola garis berada di paling atas (di atas gambar & overlay) */
+.project-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(77,217,255,.05) 10px, rgba(77,217,255,.05) 20px);
+}
+
   .mobile-menu{transition:max-height .4s ease,opacity .3s ease;max-height:0;overflow:hidden;opacity:0;}
   .mobile-menu.open{max-height:400px;opacity:1;}
   
