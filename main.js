@@ -10,7 +10,7 @@
  *   3. Mobile menu        — toggle buka/tutup, ganti ikon bars ↔ xmark
  *   4. Active nav scroll  — sorot nav-link sesuai section yang terlihat
  *   5. Reveal on scroll  — animasi .reveal + isi .skill-fill saat masuk viewport
- *   6. Contact form       — submit → tampilkan #formStatus 4 detik
+ *   6. Contact section    — form dihapus, diganti direct links (Email/WA/GitHub/LinkedIn)
  *
  * Tidak ada lagi referensi ke `data-en` / `data-id` — semua lewat i18next.
  */
@@ -126,20 +126,12 @@
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
   // ──────────────────────────────────────────────────────────────
-  // 6. CONTACT FORM
+  // 6. CONTACT SECTION
+  //    The contact form has been removed in favor of direct
+  //    Email / WhatsApp / GitHub / LinkedIn links. Nothing to
+  //    wire up here anymore, but the section is kept as a placeholder
+  //    for future interactivity (e.g. analytics on link clicks).
   // ──────────────────────────────────────────────────────────────
-  const form = document.getElementById('contactForm');
-  const status = document.getElementById('formStatus');
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    status.classList.remove('hidden');
-    status.classList.add('flex');
-    form.reset();
-    setTimeout(() => {
-      status.classList.add('hidden');
-      status.classList.remove('flex');
-    }, 10000);
-  });
 
     // ──────────────────────────────────────────────────────────────
   // 7. LANGUAGE TOAST NOTIFICATION
