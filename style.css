@@ -175,14 +175,86 @@
   background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(77,217,255,.05) 10px, rgba(77,217,255,.05) 20px);
 }
 
-    /* Ganti kode .mobile-menu lama dengan ini */
+  /* ──────────────────────────────────────────────────────────────
+     MOBILE MENU (Rapi + Staggered Animation + Unique Hover)
+  ────────────────────────────────────────────────────────────── */
   .mobile-menu{
-    position:fixed;top:0;left:0;right:0;bottom:0;
-    background:rgba(5,7,13,.98);backdrop-filter:blur(12px);z-index:40;
+    position:fixed;
+    top:0;left:0;right:0;
+    height: 100vh; /* Fallback untuk browser lama */
+    height: 100dvh; /* Dynamic height untuk mobile modern */
+    background:rgba(5,7,13,.98);
+    backdrop-filter:blur(12px);
+    z-index:40;
     display:flex;flex-direction:column;align-items:center;justify-content:center;
-    gap:1.5rem;opacity:0;pointer-events:none;transition:opacity .3s ease;
+    gap:1.5rem;
+    opacity:0;
+    visibility:hidden; /* Tambahkan ini agar tidak nge-block klik */
+    pointer-events:none;
+    transition:opacity .3s ease, visibility .3s ease;
   }
-  .mobile-menu.open{opacity:1;pointer-events:auto;}
+  .mobile-menu.open{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+  }
+  
+  /* Styling dasar untuk link mobile agar rapi */
+  .mobile-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.5rem; /* Ukuran teks lebih proporsional */
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    position: relative;
+    color: rgba(232, 244, 255, 0.4); /* Teks agak redup defaultnya */
+    padding: 0.5rem 1rem;
+    opacity: 0; /* Disiapkan untuk animasi stagger */
+    transform: translateY(30px);
+    transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
+    overflow: hidden;
+  }
+
+  /* Efek hover unik: Garis neon memanjang dari tengah */
+  .mobile-link::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: var(--neon);
+    box-shadow: 0 0 10px var(--neon);
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+  }
+
+  .mobile-link:hover {
+    color: #fff;
+    text-shadow: 0 0 8px var(--neon-soft), 0 0 20px rgba(77,217,255,0.5);
+    transform: translateY(-3px); /* Sedikit naik saat dihover */
+  }
+
+  .mobile-link:hover::after {
+    width: 100%; /* Garis memanjang penuh */
+  }
+
+  /* Animasi muncul secara berurutan (staggered) saat menu dibuka */
+  .mobile-menu.open .mobile-link {
+    animation: mobileLinkFade 0.5s forwards;
+  }
+  .mobile-menu.open .mobile-link:nth-child(1) { animation-delay: 0.1s; }
+  .mobile-menu.open .mobile-link:nth-child(2) { animation-delay: 0.15s; }
+  .mobile-menu.open .mobile-link:nth-child(3) { animation-delay: 0.2s; }
+  .mobile-menu.open .mobile-link:nth-child(4) { animation-delay: 0.25s; }
+  .mobile-menu.open .mobile-link:nth-child(5) { animation-delay: 0.3s; }
+  .mobile-menu.open .mobile-link:nth-child(6) { animation-delay: 0.35s; }
+
+  @keyframes mobileLinkFade {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
   
   ::-webkit-scrollbar{width:8px;}
   ::-webkit-scrollbar-track{background:var(--bg);}
