@@ -55,8 +55,8 @@ const translations = {
       keycap_title: "Equipment Lending Management System",
       keycap_desc: "A web application to manage the borrowing and returning of equipment using a role-based access system. The app provides separate access rights for Admin, Staff, and Borrowers.",
       docs: "Docs",
-      cargo_title: "Cargo Atlas",
-      cargo_desc: "A logistics routing platform handling 30k daily shipments across Southeast Asia, with a map-driven dispatcher UI.",
+      cargo_title: "Student Attendance App",
+      cargo_desc: "A role-based student attendance management application using Java Swing in NetBeans. The system provides separate access for Admin, Staff, and Students, with features tailored to each role to support attendance tracking and streamline school attendance management.",
       case_study: "Case Study",
       ledgr_title: "Ledgr",
       ledgr_desc: "A double-entry personal finance app with offline-first sync and an obsessively minimalist ledger view."
@@ -118,7 +118,7 @@ const translations = {
     },
     toast: {
     title: "Switch Language?",
-    desc: "You can change the language using the button at the top right."
+    desc: "You can change the language to Indonesia using the button at the top right."
     }
   },
   id: {
@@ -227,7 +227,7 @@ const translations = {
     },
     toast: {
     title: "Ganti Bahasa?",
-    desc: "Anda bisa mengubah bahasa menggunakan tombol di kanan atas."
+    desc: "Anda bisa mengubah bahasa ke bahasa Inggris menggunakan tombol di kanan atas."
     }
   }
 };
