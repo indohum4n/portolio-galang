@@ -27,9 +27,16 @@
 <script src="./main.js" defer></script>
 </head>
 <body class="relative bg-[#05070d] text-[#e8f4ff] overflow-x-hidden" style="font-family:'Space Grotesk',sans-serif;">
+<!-- PRELOADER -->
+<div id="preloader" class="preloader">
+  <div class="preloader-content">
+    <h1 class="mono text-xl tracking-[0.3em] text-white">GALANG-DEV</h1>
+    <div class="preloader-bar"></div>
+  </div>
+</div>
 
 <!-- NAVBAR -->
-<nav class="fixed top-0 left-0 right-0 z-50" style="backdrop-filter:blur(12px);background:rgba(5,7,13,.7);border-bottom:1px solid rgba(77,217,255,.12);">
+<nav class="content-fade-in fixed top-0 left-0 right-0 z-50" style="backdrop-filter:blur(12px);background:rgba(5,7,13,.7);border-bottom:1px solid rgba(77,217,255,.12);">
   <div class="max-w-7xl mx-auto px-5 sm:px-8 py-4 flex items-center justify-between">
     <a href="#home" class="flex items-center gap-2.5">
       <div class="relative w-8 h-8">
@@ -71,7 +78,7 @@
   </div>
 </nav>
 
-<main class="relative z-10 pt-24">
+<main class="content-fade-in relative z-10 pt-24">
 
   <!-- HOME -->
   <section id="home" class="min-h-[90vh] flex items-center px-5 sm:px-8 max-w-7xl mx-auto">
@@ -370,7 +377,7 @@
     </div>
   </section>
 
-  <footer class="border-t border-cyan-400/10 mt-12">
+  <footer class="content-fade-in border-t border-cyan-400/10 mt-12">
     <div class="max-w-7xl mx-auto px-5 sm:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
       <div class="flex items-center gap-2.5">
         <div class="relative w-6 h-6"><div class="neon-ring neon-ring-1 absolute inset-0" style="border-width:1px"></div><div class="pulse-dot absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style="width:5px;height:5px;"></div></div>

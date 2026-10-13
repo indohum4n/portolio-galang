@@ -16,6 +16,21 @@
  */
 
 (function () {
+    // ──────────────────────────────────────────────────────────────
+  // PRELOADER FADE OUT & CONTENT FADE IN
+  // ──────────────────────────────────────────────────────────────
+  window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    if (!preloader) return;
+    
+    // Beri jeda 800ms agar loading bar sempat terlihat
+    setTimeout(() => {
+      preloader.classList.add('hidden');     // Preloader memudar (fade out)
+      document.body.classList.add('loaded'); // Konten website muncul (fade in)
+    }, 800);
+  });
+  
+
   // ──────────────────────────────────────────────────────────────
   // 1. TRANSLATE BUTTON
   // ──────────────────────────────────────────────────────────────
