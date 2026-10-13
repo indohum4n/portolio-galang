@@ -106,16 +106,16 @@ const translations = {
       whatsapp_label: "WHATSAPP",
       github_label: "GITHUB",
       linkedin_label: "LINKEDIN",
-      email_value: "raven@aldrev.dev",
-      whatsapp_value: "+62 812-3456-7890",
+      email_value: "galang4375@gmail.com",
+      whatsapp_value: "+62 851-1757-4375",
       github_value: "github.com/indohum4n",
-      linkedin_value: "linkedin.com/in/raven-ald",
+      linkedin_value: "linkedin.com/in/galangreggie-r-058984260/",
       cta: "Have a project in mind, a question, or just want to say hi? Don't hesitate to reach out — I'm always happy to connect and explore new opportunities.",
       response_label: "RESPONSE TIME",
       response: "Usually within 24 hours"
     },
     footer: {
-      built: "Built with care, in Jakarta."
+      built: "Built with care, in Malang."
     },
     toast: {
     title: "Switch Language?",
