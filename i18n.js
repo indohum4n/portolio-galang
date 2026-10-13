@@ -28,7 +28,7 @@ const translations = {
       intro: "A frontend-leaning full-stack engineer who builds calm, performant, and user-friendly interfaces. I turn vague ideas into shipped products.",
       view_projects: "View Projects",
       contact: "Contact Me",
-      est: "EST. 2019",
+      // est: "EST. 2019",
       typewriter: ["Frontend Engineer.", "Full-Stack Web Development Learner.", "Open-Source Tinkerer.", "IoT Enthusiast."]
     },
     about: {
@@ -91,8 +91,6 @@ const translations = {
       exp2_desc: "Assisted with smartphone assembly, disassembly, and testing, while managing technical supplies, spare-part documentation, and client invoices.",
       exp3_title: "Graphic Designer & Printing Operator",
       exp3_desc: "Designed promotional materials and operated printing equipment to produce books, calendars, stickers, and other printed products.",
-      // edu1_title: "B.Sc. Computer Science",
-      // edu1_desc: "Thesis on real-time collaborative editing using CRDTs. Graduated cum laude with a 3.78 GPA.",
       edu1_title: "SMKS Turen — Software Engineering (RPL)",
       edu1_desc: "Studied Software Engineering with a focus on web development, desktop application development using Java and database management using MySQL",
       edu2_title: "SMPN 01 Turen",
@@ -118,8 +116,8 @@ const translations = {
       built: "Built with care, in Malang."
     },
     toast: {
-    title: "Switch Language?",
-    desc: "You can change the language to Indonesia using the button at the top right."
+      title: "Switch Language?",
+      desc: "You can change the language to Indonesia using the button at the top right."
     }
   },
   id: {
@@ -214,20 +212,20 @@ const translations = {
       whatsapp_label: "WHATSAPP",
       github_label: "GITHUB",
       linkedin_label: "LINKEDIN",
-      email_value: "raven@aldrev.dev",
-      whatsapp_value: "+62 812-3456-7890",
+      email_value: "galang4375@gmail.com",
+      whatsapp_value: "+62 851-1757-4375",
       github_value: "github.com/indohum4n",
-      linkedin_value: "linkedin.com/in/raven-ald",
+      linkedin_value: "linkedin.com/in/galangreggie-r-058984260/",
       cta: "Punya proyek dalam pikiran, pertanyaan, atau sekadar ingin menyapa? Jangan ragu untuk menghubungi — saya selalu senang terhubung dan menjelajahi peluang baru.",
       response_label: "WAKTU TANGGAP",
       response: "Biasanya dalam 24 jam"
     },
     footer: {
-      built: "Dibuat dengan hati-hati, di Jakarta."
+      built: "Dibuat dengan hati-hati, di Malang."
     },
     toast: {
-    title: "Ganti Bahasa?",
-    desc: "Anda bisa mengubah bahasa ke bahasa Inggris menggunakan tombol di kanan atas."
+      title: "Ganti Bahasa?",
+      desc: "Anda bisa mengubah bahasa ke bahasa Inggris menggunakan tombol di kanan atas."
     }
   }
 };
