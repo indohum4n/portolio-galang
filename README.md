@@ -6,7 +6,7 @@ The website highlights my web development journey, selected projects, and experi
 
 ## Live Demo
 
-[View Portfolio](#https://galang-dev.netlify.app/)
+[View Portfolio](https://galang-dev.netlify.app/)
 
 ## Features
 
